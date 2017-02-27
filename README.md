@@ -2,6 +2,10 @@
 
 httpfs is a simple file server.
 
+# Installation:
+While in the directory of the repo:
+`pip install -e .` (runs setup.py, installs `docopt`)
+
 # Usage:
 httpfs [-v] [-p PORT] [-d PATH-TO-DIR]<br/>
 - `-v`   Prints debugging messages.<br/>
