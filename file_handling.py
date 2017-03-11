@@ -17,7 +17,7 @@ def get_file(pathname):
             return content_file.read()
 
 
-def post_file(pathname, file_content, overwrite):
+def post_file(pathname, file_content, overwrite=True):
     # Louis-Olivier
     # returns true or false
     return ""
