@@ -1,40 +1,58 @@
 import os
+from HTTPException import HTTPException
 
 SERVER_DIRECTORY = os.getcwd() + "/files"
 
 # returns either directory tree or contents of file
 def get_file(pathname):
-    if(not isvalid(pathname)):
-        #if the pathname is not valid, fail
-        raise Exception("Invalid path!");
+    # Check if user has access to the file
+    user_has_access(pathname)
+    # Check if file exists
+    file_exists(pathname)
 
     if(pathname == "/"):
         #return tree
-        return os.listdir(SERVER_DIRECTORY)
+        return list_files(SERVER_DIRECTORY)
     else:
         #return contents of file
         with open(SERVER_DIRECTORY+pathname, 'r') as content_file:
             return content_file.read()
 
-
 def post_file(pathname, file_content, overwrite=True):
-    # Louis-Olivier
-    # returns true or false
-    # check if the valid pathname
-    if not isvalid(pathname):
-        return "Invalid path"
-    # check if overwrite or append
+    # Check if user access is granted
+    user_has_access(pathname)
+    # Check if pathname exists
+    pathname_exists(pathname)
+
+    # Check if overwrite or append
     if overwrite:
         editing_mode = 'w'
     else:
         editing_mode = 'a'
-    # edit file
+
+    # Edit file
     with open(pathname, editing_mode) as file:
         file.write(file_content)
     file.closed
     return True
 
-def isvalid(pathname):
-    # Louis-Olivier
-    # returns true if access to directory is allowed
+def user_has_access(pathname):
+    # returns true if user has access, raises HTTPException(403) if access denied
     return True
+
+def pathname_exists(pathname):
+    # returns true if pathname exists, raises HTTPException(404) if it does not
+    return True
+
+def file_exists(pathname):
+    # returns true is file exists, raises HTTPException(404) if it does not
+    return True
+
+def list_files(startpath):
+    for root, dirs, files in os.walk(startpath):
+        level = root.replace(startpath, '').count(os.sep)
+        indent = ' ' * 4 * (level)
+        print('{}{}/'.format(indent, os.path.basename(root)))
+        subindent = ' ' * 4 * (level + 1)
+        for f in files:
+            print('{}{}'.format(subindent, f))
