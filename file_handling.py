@@ -1,7 +1,9 @@
 import os
+import re
 from HTTPException import HTTPException
 
-SERVER_DIRECTORY = os.getcwd() + "/files"
+ACCESS_DIRECTORY = "/files"
+SERVER_DIRECTORY = os.getcwd() + ACCESS_DIRECTORY
 
 # Perform GET on pathname
 def get_file(pathname):
@@ -39,11 +41,17 @@ def post_file(pathname, file_content, overwrite=True):
 
 # Returns true if user has access, raises HTTPException(403) if access denied
 def user_has_access(pathname):
-    return True
+    if re.search(r"\A/files", pathname):
+        return True
+    else:
+        raise HTTPException(403)
 
 # Returns true if pathname exists, raises HTTPException(404) if it does not
 def pathname_exists(pathname):
-    return True
+    if os.path.isfile(pathname) or os.path.isdir(pathname):
+        return True
+    else:
+        raise HTTPException(404)
 
 # Returns true is file with pathname exists, raises HTTPException(404) if not
 def file_exists(pathname):
