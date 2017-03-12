@@ -45,8 +45,10 @@ def pathname_exists(pathname):
     return True
 
 def file_exists(pathname):
-    # returns true is file exists, raises HTTPException(404) if it does not
-    return True
+    if os.path.isfile(pathname):
+        return True
+    else:
+        raise HTTPException(404)
 
 def list_files(startpath):
     for root, dirs, files in os.walk(startpath):
