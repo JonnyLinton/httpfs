@@ -20,7 +20,19 @@ def get_file(pathname):
 def post_file(pathname, file_content, overwrite=True):
     # Louis-Olivier
     # returns true or false
-    return ""
+    # check if the valid pathname
+    if not isvalid(pathname):
+        return "Invalid path"
+    # check if overwrite or append
+    if overwrite:
+        editing_mode = 'w'
+    else:
+        editing_mode = 'a'
+    # edit file
+    with open(pathname, editing_mode) as file:
+        file.write(file_content)
+    file.closed
+    return True
 
 def isvalid(pathname):
     # Louis-Olivier
