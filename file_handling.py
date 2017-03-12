@@ -41,7 +41,7 @@ def post_file(pathname, file_content, overwrite=True):
 
 # Returns true if user has access, raises HTTPException(403) if access denied
 def user_has_access(pathname):
-    if re.search(r"\A/files", pathname):
+    if re.search(r"\A%s" % ACCESS_DIRECTORY, pathname):
         return True
     else:
         raise HTTPException(403)
