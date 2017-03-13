@@ -1,9 +1,10 @@
 import socket
 import threading
 import argparse
+from httpfs_helper_functions import handle_get
 
 
-def run_server(verbose, directory, port=8080):
+def run_server(port=8086):
     # port = int(port)
     host = ''
     listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -20,10 +21,23 @@ def run_server(verbose, directory, port=8080):
 def handle_client(conn, addr):
     print ('New client from', addr)
     try:
-        while True:
-            data = conn.recv(1024)
-            if not data:
-                break
-            conn.sendall(data)
+        data = conn.recv(1024)
+        # while True:
+        #     print("in loop")
+        #     data += conn.recv(256)
+        #     print("after recv")
+        #     if not data:
+        #         break
+        print("calling get")
+        content = handle_get(data).encode("utf-8")
+        # split content into smaller pieces?
+        print("sending content")
+        conn.sendall(content)
     finally:
         conn.close()
+
+
+# curl localhost:8080/file.txt
+
+if __name__ == '__main__':
+   run_server()

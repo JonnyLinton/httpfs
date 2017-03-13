@@ -1,9 +1,23 @@
 import socket
 import re
+
+sampleResponseString = '''HTTP/1.1 200 OK
+Date: Sun, 26 Sep 2010 20:09:20 GMT
+Server: Apache/2.0.52 (CentOS)
+Last-Modified: Tue, 30 Oct 2007 17:00:02
+Accept-Ranges: bytes
+Content-Length: 2652
+Keep-Alive: timeout=10, max=100
+Connection: Keep-Alive
+Content-Type: text/html
+
+data data data data data'''
+
+
 def handle_get(request_headers):
     # Jonny
     # returns GET response headers and body
-    return True
+    return sampleResponseString
 
 def handle_post(request_headers_and_data):
     # Louis-Olivier
