@@ -44,7 +44,8 @@ def post_file(pathname, file_content, overwrite=True):
 # Returns true if user has access, raises HTTPException(403) if access denied
 def user_has_access(pathname): # not working properly
 # python check if /files is a parent of file or directory, if true, True, else, exception
-    if re.search(r"\A%s" % ACCESS_DIRECTORY, pathname) or pathname == "/":
+    real_pathname = str(os.path.realpath(pathname))
+    if re.search(r"\A%s" % ACCESS_DIRECTORY, real_pathname):
         return True
     else:
         raise HTTPException(403)
@@ -74,7 +75,3 @@ def list_files(startpath):
         for f in files:
             tree += '{}{}'.format(subindent, f) + "\n"
     return tree
-
-
-# if __name__ == '__main__':
-#    get_file("/samplefile.txt")
