@@ -45,7 +45,7 @@ def post_file(pathname, file_content, overwrite=True):
 def user_has_access(pathname): # not working properly
 # python check if /files is a parent of file or directory, if true, True, else, exception
     real_pathname = str(os.path.realpath(pathname))
-    if re.search(r"\A%s" % ACCESS_DIRECTORY, real_pathname):
+    if re.search(r"\A%s" % SERVER_DIRECTORY, real_pathname):
         return True
     else:
         raise HTTPException(403)
