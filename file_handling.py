@@ -7,17 +7,19 @@ SERVER_DIRECTORY = os.getcwd() + ACCESS_DIRECTORY
 
 # Perform GET on pathname
 def get_file(pathname):
+    realPath = SERVER_DIRECTORY+pathname
+    # print(realPath)
     # Check if user has access to the file
-    user_has_access(pathname)
+    # user_has_access(pathname)
     # Check if file exists
-    file_exists(pathname)
+    file_exists(realPath)
 
     if(pathname == "/"):
         #return tree
         return list_files(SERVER_DIRECTORY)
     else:
         #return contents of file
-        with open(SERVER_DIRECTORY+pathname, 'r') as content_file:
+        with open(realPath, 'r') as content_file:
             return content_file.read()
 
 # Perform POST on inputted file
@@ -40,7 +42,8 @@ def post_file(pathname, file_content, overwrite=True):
     return True
 
 # Returns true if user has access, raises HTTPException(403) if access denied
-def user_has_access(pathname):
+def user_has_access(pathname): # not working properly
+# python check if /files is a parent of file or directory, if true, True, else, exception
     if re.search(r"\A%s" % ACCESS_DIRECTORY, pathname) or pathname == "/":
         return True
     else:
@@ -71,3 +74,7 @@ def list_files(startpath):
         for f in files:
             tree += '{}{}'.format(subindent, f) + "\n"
     return tree
+
+
+# if __name__ == '__main__':
+#    get_file("/samplefile.txt")
