@@ -6,7 +6,7 @@ from datetime import datetime
 from time import mktime
 from HTTPException import *
 
-def receive_request(data):
+def receive_request(data, verbose, directory):
     # louis
     request_type = request_type_parsing(data)
     header_dictionary = header_parsing(data)
@@ -14,23 +14,21 @@ def receive_request(data):
     print("Inside receive_request, pathname:" +pathname)
     body = body_parsing(data)
     if request_type == "GET":
-        return handle_get(header_dictionary, pathname)
+        return handle_get(header_dictionary, pathname, verbose, directory)
     elif request_type == "POST":
-        return handle_post(header_dictionary, body, pathname)
+        return handle_post(header_dictionary, body, pathname, verbose, directory)
     else:
         raise HTTPException(400)
 
-def handle_get(header_dictionary, path):
+def handle_get(header_dictionary, path, verbose, directory):
     # returns GET response headers and body
-    body = get_file(path)
+    body = get_file(path, verbose, directory)
 
-    response = '''HTTP/1.1 200 OK
-    Date: ''' +getDate() +'''
-    Content-Type: text\r\n\r\n''' +body
+    response = "HTTP/1.1 200 OK\r\nDate: " +getDate() +"\r\n\r\n" +body
 
     return response
 
-def handle_post(request_headers_and_data):
+def handle_post(header_dictionary, body, pathname, verbose, directory):
     # Louis-Olivier
     # returns POST response headers and body
     return True

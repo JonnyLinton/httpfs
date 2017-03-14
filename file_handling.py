@@ -6,15 +6,15 @@ ACCESS_DIRECTORY = "/files"
 SERVER_DIRECTORY = os.getcwd() + ACCESS_DIRECTORY
 
 # Perform GET on pathname
-def get_file(pathname):
-    realPath = SERVER_DIRECTORY+pathname
-    # print(realPath)
+def get_file(pathname, verbose, directory):
+    print("Inside get_file, directory: " +directory)
+    realPath, server_directory = resolveRealPath(directory, pathname)
     # Check if user has access to the file
-    user_has_access(realPath)
+    user_has_access(realPath, server_directory)
 
     if(pathname == "/"):
         #return tree
-        return list_files(SERVER_DIRECTORY)
+        return list_files(server_directory)
     else:
         # Check if file exists
         file_exists(realPath)
@@ -23,11 +23,13 @@ def get_file(pathname):
             return content_file.read()
 
 # Perform POST on inputted file
-def post_file(pathname, file_content, overwrite=True):
+def post_file(pathname, file_content, verbose, directory, overwrite=True):
+    realPath = resolveRealPath(directory, pathname)
+
     # Check if user access is granted
-    user_has_access(pathname)
+    user_has_access(realPath)
     # Check if pathname exists
-    pathname_exists(pathname)
+    pathname_exists(realPath)
 
     # Check if overwrite or append
     if overwrite:
@@ -41,11 +43,23 @@ def post_file(pathname, file_content, overwrite=True):
     file.closed
     return True
 
+def resolveRealPath(directory, pathname):
+    if(directory != "None"):
+        # set the directory
+        print("Inside resolveRealPath, assigning to value")
+        server_directory = directory
+    else:
+        # default is current directory
+        print("Inside resolveRealPath, assigning current directory")
+        server_directory = os.getcwd()
+    return server_directory+pathname, server_directory
+
 # Returns true if user has access, raises HTTPException(403) if access denied
-def user_has_access(pathname): # not working properly
+def user_has_access(pathname, directory): # not working properly
 # python check if /files is a parent of file or directory, if true, True, else, exception
+    print("Inside user_has_access, pathname: " +pathname +"  directory: " +directory)
     real_pathname = str(os.path.realpath(pathname))
-    if re.search(r"\A%s" % SERVER_DIRECTORY, real_pathname):
+    if re.search(r"\A%s" % directory, real_pathname):
         return True
     else:
         raise HTTPException(403)

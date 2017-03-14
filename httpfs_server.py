@@ -5,21 +5,21 @@ from httpfs_helper_functions import handle_get
 from httpfs_helper_functions import receive_request
 
 
-def run_server(port=8080):
-    # port = int(port)
+def run_server(verbose, directory, port=8080):
+    port = int(port)
     host = ''
     listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         listener.bind((host, port))
         listener.listen(5)
-        print('httpfs_server is not failing at', port)
+        print('http file server is listening at', port)
         while True:
             conn, addr = listener.accept()
-            threading.Thread(target=handle_client, args=(conn, addr)).start()
+            threading.Thread(target=handle_client, args=(conn, addr, verbose, directory)).start()
     finally:
         listener.close()
 
-def handle_client(conn, addr):
+def handle_client(conn, addr, verbose, directory):
     print ('New client from', addr)
     try:
         data = conn.recv(1024)
@@ -30,15 +30,10 @@ def handle_client(conn, addr):
         #     if not data:
         #         break
         print("Receiving request: \n" +data.decode("utf-8"))
-        response = receive_request(data.decode("utf-8")).encode("utf-8")
+        response = receive_request(data.decode("utf-8"), verbose, str(directory))
+        response = response.encode("utf-8")
         # split content into smaller pieces?
-        print("\nSending response: \n" +str(response))
+        print("\nSending response: \n" +response.decode("utf-8"))
         conn.sendall(response)
     finally:
         conn.close()
-
-
-# curl localhost:8080/file.txt
-
-if __name__ == '__main__':
-   run_server()
