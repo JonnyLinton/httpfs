@@ -11,13 +11,13 @@ def get_file(pathname):
     # print(realPath)
     # Check if user has access to the file
     user_has_access(realPath)
-    # Check if file exists
-    file_exists(realPath)
 
     if(pathname == "/"):
         #return tree
         return list_files(SERVER_DIRECTORY)
     else:
+        # Check if file exists
+        file_exists(realPath)
         #return contents of file
         with open(realPath, 'r') as content_file:
             return content_file.read()

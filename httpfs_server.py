@@ -5,14 +5,14 @@ from httpfs_helper_functions import handle_get
 from httpfs_helper_functions import receive_request
 
 
-def run_server(port=8086):
+def run_server(port=8080):
     # port = int(port)
     host = ''
     listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         listener.bind((host, port))
         listener.listen(5)
-        print('Echo server is listening at', port)
+        print('httpfs_server is not failing at', port)
         while True:
             conn, addr = listener.accept()
             threading.Thread(target=handle_client, args=(conn, addr)).start()
@@ -29,10 +29,10 @@ def handle_client(conn, addr):
         #     print("after recv")
         #     if not data:
         #         break
-        print("Receiving request: \n" +data)
-        response = receive_request(str(data)).encode("utf-8")
+        print("Receiving request: \n" +data.decode("utf-8"))
+        response = receive_request(data.decode("utf-8")).encode("utf-8")
         # split content into smaller pieces?
-        print("\nSending response: \n" +response)
+        print("\nSending response: \n" +str(response))
         conn.sendall(response)
     finally:
         conn.close()
