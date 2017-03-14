@@ -2,6 +2,7 @@ import socket
 import threading
 import argparse
 from httpfs_helper_functions import handle_get
+from httpfs_helper_functions import receive_request
 
 
 def run_server(port=8086):
@@ -29,7 +30,8 @@ def handle_client(conn, addr):
         #     if not data:
         #         break
         print("calling get")
-        content = handle_get(data).encode("utf-8")
+        print(str(data))
+        content = receive_request(str(data)).encode("utf-8")
         # split content into smaller pieces?
         print("sending content")
         conn.sendall(content)

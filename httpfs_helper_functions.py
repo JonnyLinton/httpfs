@@ -13,10 +13,13 @@ Content-Type: text/html
 
 data data data data data'''
 
+def receive_request(data):
+    # louis
 
 def handle_get(request_headers):
-    # Jonny
     # returns GET response headers and body
+    header_dictionary = header_parsing(request_headers);
+
     return sampleResponseString
 
 def handle_post(request_headers_and_data):
