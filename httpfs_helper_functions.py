@@ -1,5 +1,9 @@
 import socket
 import re
+from file_handling import get_file
+from email.utils import formatdate
+from datetime import datetime
+from time import mktime
 
 sampleResponseString = '''HTTP/1.1 200 OK
 Date: Sun, 26 Sep 2010 20:09:20 GMT
@@ -16,11 +20,24 @@ data data data data data'''
 def receive_request(data):
     # louis
 
-def handle_get(request_headers):
-    # returns GET response headers and body
-    header_dictionary = header_parsing(request_headers);
+def getDate():
+    now = datetime.now()
+    stamp = mktime(now.timetuple())
+    return formatdate(
+        timeval     = stamp,
+        localtime   = False,
+        usegmt      = True
+    )
 
-    return sampleResponseString
+def handle_get(header_dictionary, path):
+    # returns GET response headers and body
+    body = get_file(path)
+
+    response = '''HTTP/1.1 200 OK
+    Date: ''' +getDate() +'''
+    Content-Type: text\r\n\r\n''' +body
+
+    return response
 
 def handle_post(request_headers_and_data):
     # Louis-Olivier

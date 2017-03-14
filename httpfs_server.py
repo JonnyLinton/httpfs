@@ -29,12 +29,11 @@ def handle_client(conn, addr):
         #     print("after recv")
         #     if not data:
         #         break
-        print("calling get")
-        print(str(data))
-        content = receive_request(str(data)).encode("utf-8")
+        print("Receiving request: \n" +data)
+        response = receive_request(str(data)).encode("utf-8")
         # split content into smaller pieces?
-        print("sending content")
-        conn.sendall(content)
+        print("\nSending response: \n" +response)
+        conn.sendall(response)
     finally:
         conn.close()
 

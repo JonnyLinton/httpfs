@@ -10,7 +10,7 @@ def get_file(pathname):
     realPath = SERVER_DIRECTORY+pathname
     # print(realPath)
     # Check if user has access to the file
-    # user_has_access(pathname)
+    user_has_access(realPath)
     # Check if file exists
     file_exists(realPath)
 
