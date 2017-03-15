@@ -6,29 +6,28 @@ from datetime import datetime
 from time import mktime
 from HTTPException import *
 
-def receive_request(data, verbose, directory):
-    # louis
-    request_type = request_type_parsing(data)
-    header_dictionary = header_parsing(data)
-    pathname = pathname_parsing(data)
-    print("Inside receive_request, pathname:" +pathname)
-    body = body_parsing(data)
+def receive_request(request_data, verbose, server_working_directory):
+    request_type = request_type_parsing(request_data)
+    header_dictionary = header_parsing(request_data)
+    path_from_request = pathname_parsing(request_data)
+    print("Inside receive_request, path_from_request:" +path_from_request)
+    body = body_parsing(request_data)
     if request_type == "GET":
-        return handle_get(header_dictionary, pathname, verbose, directory)
+        return handle_get(header_dictionary, path_from_request, verbose, server_working_directory)
     elif request_type == "POST":
-        return handle_post(header_dictionary, body, pathname, verbose, directory)
+        return handle_post(header_dictionary, body, path_from_request, verbose, server_working_directory)
     else:
         raise HTTPException(400)
 
-def handle_get(header_dictionary, path, verbose, directory):
+def handle_get(header_dictionary, path_from_request, verbose, server_working_directory):
     # returns GET response headers and body
-    body = get_file(path, verbose, directory)
+    body = get_file(path_from_request, verbose, server_working_directory)
 
     response = "HTTP/1.1 200 OK\r\nDate: " +getDate() +"\r\n\r\n" +body
 
     return response
 
-def handle_post(header_dictionary, body, pathname, verbose, directory):
+def handle_post(header_dictionary, body, path_from_request, verbose, server_working_directory):
     # Louis-Olivier
     # returns POST response headers and body
     return True

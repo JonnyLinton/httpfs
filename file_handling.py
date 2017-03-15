@@ -2,34 +2,32 @@ import os
 import re
 from HTTPException import HTTPException
 
-ACCESS_DIRECTORY = "/files"
-SERVER_DIRECTORY = os.getcwd() + ACCESS_DIRECTORY
-
 # Perform GET on pathname
-def get_file(pathname, verbose, directory):
-    print("Inside get_file, directory: " +directory)
-    realPath, server_directory = resolveRealPath(directory, pathname)
+#path_from_request, server_working_directory, absolute_path
+def get_file(path_from_request, verbose, server_working_directory):
+    print("Inside get_file, directory: " +server_working_directory)
+    absolute_path, server_working_directory = get_absolute_path(server_working_directory, path_from_request)
     # Check if user has access to the file
-    user_has_access(realPath, server_directory)
+    user_has_access(absolute_path, server_working_directory)
 
-    if(pathname == "/"):
+    if(path_from_request == "/"):
         #return tree
-        return list_files(server_directory)
+        return list_files(server_working_directory)
     else:
         # Check if file exists
-        file_exists(realPath)
+        file_exists(absolute_path)
         #return contents of file
-        with open(realPath, 'r') as content_file:
+        with open(absolute_path, 'r') as content_file:
             return content_file.read()
 
 # Perform POST on inputted file
-def post_file(pathname, file_content, verbose, directory, overwrite=True):
-    realPath = resolveRealPath(directory, pathname)
+def post_file(path_from_request, file_content, verbose, server_working_directory, overwrite=True):
+    absolute_path, server_working_directory = get_absolute_path(server_working_directory, path_from_request)
 
     # Check if user access is granted
-    user_has_access(realPath)
+    user_has_access(absolute_path)
     # Check if pathname exists
-    pathname_exists(realPath)
+    pathname_exists(absolute_path)
 
     # Check if overwrite or append
     if overwrite:
@@ -38,42 +36,42 @@ def post_file(pathname, file_content, verbose, directory, overwrite=True):
         editing_mode = 'a'
 
     # Edit file
-    with open(pathname, editing_mode) as file:
+    with open(absolute_path, editing_mode) as file:
         file.write(file_content)
     file.closed
     return True
 
-def resolveRealPath(directory, pathname):
-    if(directory != "None"):
+def get_absolute_path(server_working_directory, path_from_request):
+    if(server_working_directory != "None"):
         # set the directory
         print("Inside resolveRealPath, assigning to value")
-        server_directory = directory
+        server_directory = server_working_directory
     else:
         # default is current directory
         print("Inside resolveRealPath, assigning current directory")
         server_directory = os.getcwd()
-    return server_directory+pathname, server_directory
+    return server_directory+path_from_request, server_directory
 
 # Returns true if user has access, raises HTTPException(403) if access denied
-def user_has_access(pathname, directory): # not working properly
+def user_has_access(absolute_path, server_working_directory): # not working properly
 # python check if /files is a parent of file or directory, if true, True, else, exception
-    print("Inside user_has_access, pathname: " +pathname +"  directory: " +directory)
-    real_pathname = str(os.path.realpath(pathname))
-    if re.search(r"\A%s" % directory, real_pathname):
+    print("Inside user_has_access, absolute_path: " +absolute_path +"  server_working_directory: " +server_working_directory)
+    real_pathname = str(os.path.realpath(absolute_path))
+    if re.search(r"\A%s" % server_working_directory, real_pathname):
         return True
     else:
         raise HTTPException(403)
 
 # Returns true if pathname exists, raises HTTPException(404) if it does not
-def pathname_exists(pathname):
-    if os.path.isfile(pathname) or os.path.isdir(pathname):
+def pathname_exists(absolute_path):
+    if os.path.isfile(absolute_path) or os.path.isdir(absolute_path):
         return True
     else:
         raise HTTPException(404)
 
 # Returns true is file with pathname exists, raises HTTPException(404) if not
-def file_exists(pathname):
-    if os.path.isfile(pathname):
+def file_exists(absolute_path):
+    if os.path.isfile(absolute_path):
         return True
     else:
         raise HTTPException(404)
