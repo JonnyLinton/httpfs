@@ -25,7 +25,7 @@ def post_file(path_from_request, file_content, verbose, server_working_directory
     absolute_path, server_working_directory = get_absolute_path(server_working_directory, path_from_request)
 
     # Check if user access is granted
-    user_has_access(absolute_path)
+    user_has_access(absolute_path, server_working_directory)
     # Check if pathname exists
     pathname_exists(absolute_path)
 
@@ -38,8 +38,8 @@ def post_file(path_from_request, file_content, verbose, server_working_directory
     # Edit file
     with open(absolute_path, editing_mode) as file:
         file.write(file_content)
+        return file_content + "\n\r\n\r"
     file.closed
-    return True
 
 def get_absolute_path(server_working_directory, path_from_request):
     if(server_working_directory != "None"):
@@ -64,7 +64,8 @@ def user_has_access(absolute_path, server_working_directory): # not working prop
 
 # Returns true if pathname exists, raises HTTPException(404) if it does not
 def pathname_exists(absolute_path):
-    if os.path.isfile(absolute_path) or os.path.isdir(absolute_path):
+    file_parent = os.path.dirname(absolute_path)
+    if os.path.isfile(absolute_path) or os.path.isdir(file_parent):
         return True
     else:
         raise HTTPException(404)

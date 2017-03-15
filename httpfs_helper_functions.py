@@ -1,6 +1,7 @@
 import socket
 import re
 from file_handling import get_file
+from file_handling import post_file
 from email.utils import formatdate
 from datetime import datetime
 from time import mktime
@@ -30,7 +31,11 @@ def handle_get(header_dictionary, path_from_request, verbose, server_working_dir
 def handle_post(header_dictionary, body, path_from_request, verbose, server_working_directory):
     # Louis-Olivier
     # returns POST response headers and body
-    return True
+    body = post_file(path_from_request, body, verbose, server_working_directory, overwrite=True)
+
+    response = "HTTP/1.1 200 OK\r\nDate: " + getDate() +"\r\n\r\n" + body
+
+    return response
 
 def header_parsing(header):
     dict = {}
