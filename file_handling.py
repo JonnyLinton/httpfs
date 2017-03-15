@@ -28,6 +28,8 @@ def post_file(path_from_request, file_content, verbose, server_working_directory
     user_has_access(absolute_path, server_working_directory)
     # Check if pathname exists
     pathname_exists(absolute_path)
+    # Check if pathname is not directory
+    is_not_directory(absolute_path)
 
     # Check if overwrite or append
     if overwrite:
@@ -38,7 +40,7 @@ def post_file(path_from_request, file_content, verbose, server_working_directory
     # Edit file
     with open(absolute_path, editing_mode) as file:
         file.write(file_content)
-        return file_content + "\n\r\n\r"
+        return file_content + "\n\r"
     file.closed
 
 def get_absolute_path(server_working_directory, path_from_request):
@@ -53,8 +55,8 @@ def get_absolute_path(server_working_directory, path_from_request):
     return server_directory+path_from_request, server_directory
 
 # Returns true if user has access, raises HTTPException(403) if access denied
-def user_has_access(absolute_path, server_working_directory): # not working properly
-# python check if /files is a parent of file or directory, if true, True, else, exception
+def user_has_access(absolute_path, server_working_directory):
+#   check if /files is a parent of file or directory, if true, True, else, exception
     print("Inside user_has_access, absolute_path: " +absolute_path +"  server_working_directory: " +server_working_directory)
     real_pathname = str(os.path.realpath(absolute_path))
     if re.search(r"\A%s" % server_working_directory, real_pathname):
@@ -76,6 +78,11 @@ def file_exists(absolute_path):
         return True
     else:
         raise HTTPException(404)
+def is_not_directory(absolute_path):
+    if os.path.isdir(absolute_path):
+        raise HTTPException(404)
+    else:
+        return True
 
 # Prints complete directory tree for path
 def list_files(startpath):
