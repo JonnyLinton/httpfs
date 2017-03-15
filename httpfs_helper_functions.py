@@ -29,7 +29,6 @@ def handle_get(header_dictionary, path_from_request, verbose, server_working_dir
     return response
 
 def handle_post(header_dictionary, body, path_from_request, verbose, server_working_directory):
-    # Louis-Olivier
     # returns POST response headers and body
     body = post_file(path_from_request, body, verbose, server_working_directory, overwrite=True)
 
@@ -47,15 +46,12 @@ def header_parsing(header):
     return dict
 
 def request_type_parsing(header):
-    # print("Inside request_type_parsing, header: " + header)
     return re.search(r"^[^ /]*", header).group(0)
 
 def pathname_parsing(header):
-    # print("Inside pathname_parsing, header: " + header)
     return re.search(r"\s(.*?)\s", header).group(0).replace(" ", "")
 
 def body_parsing(request):
-    # print("Inside body_parsing, request: " + request)
     data_content = request.split("\r\n\r\n")
     if len(data_content) > 1:
         return data_content[1]
