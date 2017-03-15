@@ -1,10 +1,37 @@
-2017-03-14 23:50:48,467 - httpfs_logger - INFO  - Request Received
-2017-03-14 23:50:48,469 - httpfs_logger - INFO  - Request is of type POST
-2017-03-14 23:54:33,321 - httpfs_logger - INFO  - Request Received
-2017-03-14 23:54:33,323 - httpfs_logger - INFO  - Request is of type POST
-2017-03-14 23:54:40,545 - httpfs_logger - INFO  - Request Received
-2017-03-14 23:54:40,546 - httpfs_logger - INFO  - Request is of type POST
-2017-03-14 23:54:41,434 - httpfs_logger - INFO  - Request Received
-2017-03-14 23:54:41,434 - httpfs_logger - INFO  - Request is of type POST
-2017-03-14 23:54:42,301 - httpfs_logger - INFO  - Request Received
-2017-03-14 23:54:42,301 - httpfs_logger - INFO  - Request is of type POST
+2017-03-15 00:27:58,133 - httpfs_logger - INFO  - Server initialized at port 8081
+2017-03-15 00:28:09,625 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 62148)
+2017-03-15 00:28:09,628 - httpfs_logger - INFO  - Request Received
+2017-03-15 00:28:09,632 - httpfs_logger - INFO  - Request is of type POST
+2017-03-15 00:29:29,921 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 62153)
+2017-03-15 00:29:29,923 - httpfs_logger - INFO  - Request Received
+2017-03-15 00:29:29,924 - httpfs_logger - INFO  - Request is of type POST
+2017-03-15 00:30:14,930 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 62157)
+2017-03-15 00:30:14,931 - httpfs_logger - INFO  - Request Received
+2017-03-15 00:30:14,932 - httpfs_logger - INFO  - Request is of type POST
+2017-03-15 00:31:05,984 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 62162)
+2017-03-15 00:31:05,986 - httpfs_logger - INFO  - Request Received
+2017-03-15 00:31:05,989 - httpfs_logger - INFO  - Request is of type POST
+2017-03-15 00:31:49,351 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 62165)
+2017-03-15 00:31:49,351 - httpfs_logger - INFO  - Request Received
+2017-03-15 00:31:49,352 - httpfs_logger - INFO  - Request is of type POST
+2017-03-15 00:32:08,435 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 62170)
+2017-03-15 00:32:08,436 - httpfs_logger - INFO  - Request Received
+2017-03-15 00:32:08,437 - httpfs_logger - INFO  - Request is of type POST
+2017-03-15 00:34:16,805 - httpfs_logger - INFO  - Server initialized at port 8081
+2017-03-15 00:34:21,968 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 62178)
+2017-03-15 00:34:21,968 - httpfs_logger - INFO  - Request Received
+2017-03-15 00:34:21,970 - httpfs_logger - INFO  - Request is of type POST /samplefolder/teeesttt.txt
+2017-03-15 00:34:47,405 - httpfs_logger - INFO  - Server initialized at port 8081
+2017-03-15 00:34:52,836 - httpfs_logger - INFO  - Server initialized at port 8080
+2017-03-15 00:35:00,067 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 62184)
+2017-03-15 00:35:00,067 - httpfs_logger - INFO  - Request Received
+2017-03-15 00:35:00,068 - httpfs_logger - INFO  - Request is of type POST /samplefolder/teeesttt.txt
+2017-03-15 00:35:50,280 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 62186)
+2017-03-15 00:35:50,552 - httpfs_logger - INFO  - Request Received
+2017-03-15 00:35:50,553 - httpfs_logger - INFO  - Request is of type GET /
+2017-03-15 00:35:51,014 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 62190)
+2017-03-15 00:35:51,015 - httpfs_logger - INFO  - Request Received
+2017-03-15 00:35:51,015 - httpfs_logger - INFO  - Request is of type GET /favicon.ico
+2017-03-15 00:36:02,971 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 62194)
+2017-03-15 00:36:02,992 - httpfs_logger - INFO  - Request Received
+2017-03-15 00:36:02,992 - httpfs_logger - INFO  - Request is of type GET /coffee.html

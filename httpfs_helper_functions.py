@@ -13,13 +13,14 @@ def receive_request(request_data, verbose, server_working_directory):
     request_type = request_type_parsing(request_data)
     header_dictionary = header_parsing(request_data)
     path_from_request = pathname_parsing(request_data)
+    print("This is the path from request: ", path_from_request)
     print("Inside receive_request, path_from_request:" +path_from_request)
     body = body_parsing(request_data)
     if request_type == "GET":
-        logger.info("Request is of type GET")
+        logger.info("Request is of type GET %s", path_from_request)
         return handle_get(header_dictionary, path_from_request, verbose, server_working_directory)
     elif request_type == "POST":
-        logger.info("Request is of type POST")
+        logger.info("Request is of type POST %s", path_from_request)
         return handle_post(header_dictionary, body, path_from_request, verbose, server_working_directory)
     else:
         raise HTTPException(400)
