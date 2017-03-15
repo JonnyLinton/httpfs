@@ -9,7 +9,7 @@ from logger_init import logger
 def run_server(verbose, server_working_directory, port=8080):
     # Disable the logger if verbose is False
     logger.disabled = not verbose
-    logger.info("Server initialized at port %s", port)
+    logger.warning("Server initialized at port %s", port)
     port = int(port)
     host = ''
     listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

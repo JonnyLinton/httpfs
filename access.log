@@ -35,3 +35,7 @@
 2017-03-15 00:36:02,971 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 62194)
 2017-03-15 00:36:02,992 - httpfs_logger - INFO  - Request Received
 2017-03-15 00:36:02,992 - httpfs_logger - INFO  - Request is of type GET /coffee.html
+2017-03-15 00:43:13,077 - httpfs_logger - WARNING  - Server initialized at port 8080
+2017-03-15 00:43:19,102 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 62266)
+2017-03-15 00:43:19,103 - httpfs_logger - INFO  - Request Received
+2017-03-15 00:43:19,104 - httpfs_logger - INFO  - Request is of type POST /samplefolder/teeesttt.txt

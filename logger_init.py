@@ -1,7 +1,7 @@
 import logging
 
 logger = logging.getLogger("httpfs_logger")
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 file_handler = logging.FileHandler("access.log")
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s  - %(message)s')
 file_handler.setFormatter(formatter)
