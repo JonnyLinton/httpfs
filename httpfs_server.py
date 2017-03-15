@@ -4,9 +4,11 @@ import argparse
 from httpfs_helper_functions import handle_get
 from httpfs_helper_functions import receive_request
 from HTTPException import *
+from logger_init import logger
 
-
-def run_server(verbose, server_working_directory, port=8080):
+def run_server(verbose, server_working_directory, port=8081):
+    # Disable the logger if verbose is False
+    logger.disabled = not verbose
     port = int(port)
     host = ''
     listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
