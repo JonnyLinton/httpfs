@@ -6,7 +6,7 @@ from httpfs_helper_functions import receive_request
 from HTTPException import *
 from logger_init import logger
 
-def run_server(verbose, server_working_directory, port=8080):
+def run_server(verbose, server_working_directory, port=8081):
     # Disable the logger if verbose is False
     logger.disabled = not verbose
     logger.warning("Server initialized at port %s", port)
@@ -49,6 +49,7 @@ def handle_client(conn, addr, verbose, server_working_directory):
             print("\nSending response: \n" +response.decode("utf-8"))
             conn.sendall(response)
     finally:
+        logger.info("Connection with client %s closed.", str(addr))
         conn.close()
 
 def http_name_from_code(http_code):

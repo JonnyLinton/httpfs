@@ -39,3 +39,30 @@
 2017-03-15 00:43:19,102 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 62266)
 2017-03-15 00:43:19,103 - httpfs_logger - INFO  - Request Received
 2017-03-15 00:43:19,104 - httpfs_logger - INFO  - Request is of type POST /samplefolder/teeesttt.txt
+2017-03-15 21:03:12,916 - httpfs_logger - WARNING  - Server initialized at port 8080
+2017-03-15 21:03:35,120 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 50764)
+2017-03-15 21:03:35,124 - httpfs_logger - INFO  - Request Received
+2017-03-15 21:03:35,128 - httpfs_logger - INFO  - Request is of type GET /
+2017-03-15 21:06:29,571 - httpfs_logger - WARNING  - Server initialized at port 8080
+2017-03-15 21:06:33,951 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 50775)
+2017-03-15 21:06:33,952 - httpfs_logger - INFO  - Request Received
+2017-03-15 21:06:33,955 - httpfs_logger - INFO  - Request is of type GET /
+2017-03-15 21:07:11,449 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 50780)
+2017-03-15 21:07:11,449 - httpfs_logger - INFO  - Request Received
+2017-03-15 21:07:11,449 - httpfs_logger - INFO  - Request is of type GET /
+2017-03-15 21:07:16,794 - httpfs_logger - WARNING  - Server initialized at port 8080
+2017-03-15 21:07:25,773 - httpfs_logger - WARNING  - Server initialized at port 8081
+2017-03-15 21:07:30,810 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 50783)
+2017-03-15 21:07:30,811 - httpfs_logger - INFO  - Request Received
+2017-03-15 21:07:30,812 - httpfs_logger - INFO  - Request is of type GET /
+2017-03-15 21:07:30,813 - httpfs_logger - INFO  - Returning list of files in main directory: /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/
+2017-03-15 21:07:46,704 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 50786)
+2017-03-15 21:07:46,705 - httpfs_logger - INFO  - Request Received
+2017-03-15 21:07:46,706 - httpfs_logger - INFO  - Request is of type GET /samplefile.txt
+2017-03-15 21:07:46,707 - httpfs_logger - INFO  - Returning content of file at /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/samplefile.txt
+2017-03-15 21:08:45,510 - httpfs_logger - WARNING  - Server initialized at port 8081
+2017-03-15 21:08:48,492 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 50791)
+2017-03-15 21:08:48,493 - httpfs_logger - INFO  - Request Received
+2017-03-15 21:08:48,495 - httpfs_logger - INFO  - Request is of type GET /samplefile.txt
+2017-03-15 21:08:48,496 - httpfs_logger - INFO  - Returning content of file at /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/samplefile.txt
+2017-03-15 21:08:48,498 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 50791) closed.

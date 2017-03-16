@@ -1,23 +1,25 @@
 import os
 import re
+from logger_init import logger
 from HTTPException import HTTPException
 
 # Perform GET on pathname
 #path_from_request, server_working_directory, absolute_path
 def get_file(path_from_request, verbose, server_working_directory):
-    print("Inside get_file, directory: " +server_working_directory)
     absolute_path, server_working_directory = get_absolute_path(server_working_directory, path_from_request)
     # Check if user has access to the file
     user_has_access(absolute_path, server_working_directory)
 
     if(path_from_request == "/"):
         #return tree
+        logger.info("Returning list of files in main directory: %s", absolute_path)
         return list_files(server_working_directory)
     else:
         # Check if file exists
         file_exists(absolute_path)
         #return contents of file
         with open(absolute_path, 'r') as content_file:
+            logger.info("Returning content of file at %s", absolute_path)
             return content_file.read()
 
 # Perform POST on inputted file

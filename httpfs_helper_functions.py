@@ -13,8 +13,6 @@ def receive_request(request_data, verbose, server_working_directory):
     request_type = request_type_parsing(request_data)
     header_dictionary = header_parsing(request_data)
     path_from_request = pathname_parsing(request_data)
-    print("This is the path from request: ", path_from_request)
-    print("Inside receive_request, path_from_request:" +path_from_request)
     body = body_parsing(request_data)
     if request_type == "GET":
         logger.info("Request is of type GET %s", path_from_request)
