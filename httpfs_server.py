@@ -56,4 +56,5 @@ def http_name_from_code(http_code):
         logger.error("Not Found %i", http_code)
         return "Not Found"
     else:
-        raise Exception("Something went wrong. Please submit your request again.")
+        logger.error("Exceptional Exception: %i", http_code)
+        return "Something went wrong. Please submit your request again."

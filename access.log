@@ -255,3 +255,34 @@
 2017-03-16 00:54:04,797 - httpfs_logger - INFO  - Request is of type GET /
 2017-03-16 00:54:04,798 - httpfs_logger - INFO  - Returning list of files in main directory: /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/
 2017-03-16 00:54:04,799 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 62757) closed.
+2017-03-16 00:58:10,600 - httpfs_logger - WARNING  - Server initialized at port 8081
+2017-03-16 00:58:13,652 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 63031)
+2017-03-16 00:58:13,652 - httpfs_logger - INFO  - Request Received
+2017-03-16 00:58:13,653 - httpfs_logger - INFO  - Request is of type GET /
+2017-03-16 00:58:13,654 - httpfs_logger - INFO  - Returning list of files in main directory: /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/
+2017-03-16 00:58:13,658 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 63031) closed.
+2017-03-16 00:58:19,752 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 63040)
+2017-03-16 00:58:19,752 - httpfs_logger - INFO  - Request Received
+2017-03-16 00:58:19,753 - httpfs_logger - INFO  - Request is of type GET /files
+2017-03-16 00:58:19,753 - httpfs_logger - ERROR  - Not Found 404
+2017-03-16 00:58:19,754 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 63040) closed.
+2017-03-16 00:58:25,212 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 63048)
+2017-03-16 00:58:25,213 - httpfs_logger - INFO  - Request Received
+2017-03-16 00:58:25,213 - httpfs_logger - INFO  - Request is of type GET /
+2017-03-16 00:58:25,213 - httpfs_logger - INFO  - Returning list of files in main directory: /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/
+2017-03-16 00:58:25,214 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 63048) closed.
+2017-03-16 00:58:35,766 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 63064)
+2017-03-16 00:58:35,766 - httpfs_logger - INFO  - Request Received
+2017-03-16 00:58:35,767 - httpfs_logger - INFO  - Request is of type GET /samplefolder
+2017-03-16 00:58:35,767 - httpfs_logger - INFO  - Returning list of files in main directory: /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/samplefolder
+2017-03-16 00:58:35,768 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 63064) closed.
+2017-03-16 00:58:49,367 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 63080)
+2017-03-16 00:58:49,368 - httpfs_logger - INFO  - Request Received
+2017-03-16 00:58:49,368 - httpfs_logger - INFO  - Request is of type GET /
+2017-03-16 00:58:49,368 - httpfs_logger - INFO  - Returning list of files in main directory: /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/
+2017-03-16 00:58:49,369 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 63080) closed.
+2017-03-16 00:58:55,270 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 63089)
+2017-03-16 00:58:55,271 - httpfs_logger - INFO  - Request Received
+2017-03-16 00:58:55,272 - httpfs_logger - INFO  - Request is of type GET /samplefile.txt
+2017-03-16 00:58:55,273 - httpfs_logger - INFO  - Returning content of file at /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/samplefile.txt
+2017-03-16 00:58:55,289 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 63089) closed.
