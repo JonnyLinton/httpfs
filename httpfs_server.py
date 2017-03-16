@@ -1,4 +1,5 @@
 import socket
+import os
 import threading
 import argparse
 from httpfs_helper_functions import handle_get
@@ -6,7 +7,7 @@ from httpfs_helper_functions import receive_request
 from HTTPException import *
 from logger_init import logger
 
-def run_server(verbose, server_working_directory, port=8081):
+def run_server(verbose, server_working_directory, port=8080):
     # Disable the logger if verbose is False
     logger.disabled = not verbose
     logger.warning("Server initialized at port %s", port)
@@ -18,8 +19,10 @@ def run_server(verbose, server_working_directory, port=8081):
         listener.listen(5)
         print('HTTPfs is listening at', port)
         while True:
+            threading.Thread(target=end_server).start()
             conn, addr = listener.accept()
             threading.Thread(target=handle_client, args=(conn, addr, verbose, server_working_directory)).start()
+
     finally:
         listener.close()
 
@@ -44,6 +47,11 @@ def handle_client(conn, addr, verbose, server_working_directory):
     finally:
         logger.info("Connection with client %s closed.", str(addr))
         conn.close()
+
+def end_server():
+    user_input = input()
+    if user_input == "exit":
+        os._exit(1)
 
 def http_name_from_code(http_code):
     if(http_code == 400):
