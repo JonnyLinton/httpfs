@@ -13,4 +13,4 @@ httpfs [-v] [-p PORT] [-d PATH-TO-DIR]<br/>
 - `-d`   Specifies the directory that the server will use to read/write requested files. Default is the current directory when launching the application. <br/>
 
 ## Example Usage
-httpfs -v -p 8080 -d "/Users/user/Documents/files"
+`httpfs -v -p 8080 -d "/Users/user/Documents/files"`
