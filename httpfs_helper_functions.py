@@ -1,7 +1,9 @@
 import socket
 import re
+import mimetypes
 from file_handling import get_file
 from file_handling import post_file
+from file_handling import get_absolute_path
 from email.utils import formatdate
 from datetime import datetime
 from time import mktime
@@ -27,7 +29,7 @@ def handle_get(header_dictionary, path_from_request, verbose, server_working_dir
     # returns GET response headers and body
     body = get_file(path_from_request, verbose, server_working_directory)
 
-    response = "HTTP/1.1 200 OK\r\nDate: " +getDate() +"\r\n\r\n" +body
+    response = "HTTP/1.1 200 OK\r\nDate: " + getDate() + "\r\n" + get_content_type(path_from_request, server_working_directory) + "\r\nContent-Disposition: inline" + "\r\n\r\n" +body
 
     return response
 
@@ -69,3 +71,7 @@ def getDate():
         localtime   = False,
         usegmt      = True
     )
+
+def get_content_type(file_path, server_working_directory):
+    absolute_path, server_working_directory = get_absolute_path(server_working_directory, file_path)
+    return "Content-Type: " + mimetypes.guess_type(absolute_path)[0]

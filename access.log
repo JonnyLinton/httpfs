@@ -72,3 +72,31 @@
 2017-03-15 21:14:00,559 - httpfs_logger - INFO  - Request is of type GET /samplefile.txt
 2017-03-15 21:14:00,560 - httpfs_logger - INFO  - Returning content of file at /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/samplefile.txt
 2017-03-15 21:14:00,563 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 50821) closed.
+2017-03-15 21:18:07,970 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 50856)
+2017-03-15 21:18:07,973 - httpfs_logger - INFO  - Request Received
+2017-03-15 21:18:07,978 - httpfs_logger - INFO  - Request is of type GET /samplefile/blablaaa
+2017-03-15 21:18:07,981 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 50856) closed.
+2017-03-15 21:18:45,178 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 50861)
+2017-03-15 21:18:45,178 - httpfs_logger - INFO  - Request Received
+2017-03-15 21:18:45,178 - httpfs_logger - INFO  - Request is of type GET /samplefolder/anothersamplefile.txt
+2017-03-15 21:18:45,180 - httpfs_logger - INFO  - Returning content of file at /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/samplefolder/anothersamplefile.txt
+2017-03-15 21:18:45,182 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 50861) closed.
+2017-03-15 21:34:53,825 - httpfs_logger - WARNING  - Server initialized at port 8081
+2017-03-15 21:35:23,726 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 50943)
+2017-03-15 21:35:23,728 - httpfs_logger - INFO  - Request Received
+2017-03-15 21:35:23,730 - httpfs_logger - INFO  - Request is of type GET /samplefile.txt
+2017-03-15 21:35:23,731 - httpfs_logger - INFO  - Returning content of file at /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/samplefile.txt
+2017-03-15 21:35:23,734 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 50943) closed.
+2017-03-15 21:35:48,807 - httpfs_logger - WARNING  - Server initialized at port 8081
+2017-03-15 21:35:58,093 - httpfs_logger - WARNING  - Server initialized at port 8080
+2017-03-15 21:36:05,369 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 50947)
+2017-03-15 21:36:05,369 - httpfs_logger - INFO  - Request Received
+2017-03-15 21:36:05,370 - httpfs_logger - INFO  - Request is of type GET /samplefile.txt
+2017-03-15 21:36:05,371 - httpfs_logger - INFO  - Returning content of file at /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/samplefile.txt
+2017-03-15 21:36:05,380 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 50947) closed.
+2017-03-15 21:42:31,307 - httpfs_logger - WARNING  - Server initialized at port 8080
+2017-03-15 21:42:35,861 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 51009)
+2017-03-15 21:42:35,862 - httpfs_logger - INFO  - Request Received
+2017-03-15 21:42:35,864 - httpfs_logger - INFO  - Request is of type GET /samplefile.txt
+2017-03-15 21:42:35,868 - httpfs_logger - INFO  - Returning content of file at /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/samplefile.txt
+2017-03-15 21:42:35,878 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 51009) closed.
