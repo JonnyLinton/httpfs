@@ -43,7 +43,7 @@ def handle_client(conn, addr, verbose, server_working_directory):
             # catch any HTTPExceptions and instead transform it into the appropriate response code
             http_code = e.args[0]
             http_code_name = http_name_from_code(http_code)
-            response = "HTTP/1.1 " +str(http_code) +" " +http_code_name +"\r\n\r\n"
+            response = "HTTP/1.1 " +str(http_code) +" " +http_code_name +"\r\n\r\nError " +str(http_code) +" (" +http_code_name +") !!" 
             response = response.encode("utf-8")
         finally:
             print("\nSending response: \n" +response.decode("utf-8"))
