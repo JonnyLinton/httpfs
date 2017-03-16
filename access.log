@@ -100,3 +100,18 @@
 2017-03-15 21:42:35,864 - httpfs_logger - INFO  - Request is of type GET /samplefile.txt
 2017-03-15 21:42:35,868 - httpfs_logger - INFO  - Returning content of file at /Users/louisolivier/Google Drive/Shared/Documents/COMP/Winter 2017/COMP445/LA2/httpfs/files/samplefile.txt
 2017-03-15 21:42:35,878 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 51009) closed.
+2017-03-15 21:58:36,959 - httpfs_logger - WARNING  - Server initialized at port 8080
+2017-03-15 21:58:58,023 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 55153)
+2017-03-15 21:58:58,023 - httpfs_logger - INFO  - Request Received
+2017-03-15 21:58:58,024 - httpfs_logger - INFO  - Request is of type POST /newFile.txt
+2017-03-15 21:58:58,025 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 55153) closed.
+2017-03-15 22:00:45,032 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 55171)
+2017-03-15 22:00:45,032 - httpfs_logger - INFO  - Request Received
+2017-03-15 22:00:45,032 - httpfs_logger - INFO  - Request is of type GET /newFile.txt
+2017-03-15 22:00:45,032 - httpfs_logger - INFO  - Returning content of file at /Users/JonnyLinton/Development/httpfs/newFile.txt
+2017-03-15 22:00:45,040 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 55171) closed.
+2017-03-15 22:01:09,781 - httpfs_logger - INFO  - New connection: ('127.0.0.1', 55177)
+2017-03-15 22:01:09,781 - httpfs_logger - INFO  - Request Received
+2017-03-15 22:01:09,781 - httpfs_logger - INFO  - Request is of type GET /files/coffee.html
+2017-03-15 22:01:09,782 - httpfs_logger - INFO  - Returning content of file at /Users/JonnyLinton/Development/httpfs/files/coffee.html
+2017-03-15 22:01:09,782 - httpfs_logger - INFO  - Connection with client ('127.0.0.1', 55177) closed.
