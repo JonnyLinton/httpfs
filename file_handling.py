@@ -10,10 +10,10 @@ def get_file(path_from_request, verbose, server_working_directory):
     # Check if user has access to the file
     user_has_access(absolute_path, server_working_directory)
 
-    if(path_from_request == "/"):
+    if path_from_request == "/" or os.path.isdir(absolute_path):
         #return tree
         logger.info("Returning list of files in main directory: %s", absolute_path)
-        return list_files(server_working_directory)
+        return list_files(absolute_path)
     else:
         # Check if file exists
         file_exists(absolute_path)
@@ -48,18 +48,15 @@ def post_file(path_from_request, file_content, verbose, server_working_directory
 def get_absolute_path(server_working_directory, path_from_request):
     if(server_working_directory != "None"):
         # set the directory
-        print("Inside resolveRealPath, assigning to value")
         server_directory = server_working_directory
     else:
         # default is current directory
-        print("Inside resolveRealPath, assigning current directory")
         server_directory = os.getcwd()
     return server_directory+path_from_request, server_directory
 
 # Returns true if user has access, raises HTTPException(403) if access denied
 def user_has_access(absolute_path, server_working_directory):
 #   check if /files is a parent of file or directory, if true, True, else, exception
-    print("Inside user_has_access, absolute_path: " +absolute_path +"  server_working_directory: " +server_working_directory)
     real_pathname = str(os.path.realpath(absolute_path))
     if re.search(r"\A%s" % server_working_directory, real_pathname):
         return True
