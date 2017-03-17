@@ -19,9 +19,10 @@ def run_server(verbose, server_working_directory, port=8080):
         listener.listen(5)
         print('HTTPfs is listening at', port)
         while True:
-            threading.Thread(target=end_server).start()
             conn, addr = listener.accept()
             threading.Thread(target=handle_client, args=(conn, addr, verbose, server_working_directory)).start()
+            # threading not ready for prime time
+            # threading.Thread(target=end_server).start()
 
     finally:
         listener.close()
