@@ -2,6 +2,7 @@ import os
 import re
 from logger_init import logger
 from HTTPException import HTTPException
+import portalocker
 
 # Perform GET on pathname
 #path_from_request, server_working_directory, absolute_path
@@ -18,11 +19,10 @@ def get_file(path_from_request, verbose, server_working_directory):
         # Check if file exists
         file_exists(absolute_path)
         #return contents of file
-        with open(absolute_path, 'r') as content_file:
+        with portalocker.Lock(absolute_path, 'r') as content_file:
             logger.info("Returning content of file at %s", absolute_path)
             return content_file.read()
 
-# Perform POST on inputted file
 def post_file(path_from_request, file_content, verbose, server_working_directory, overwrite=True):
     absolute_path, server_working_directory = get_absolute_path(server_working_directory, path_from_request)
 
