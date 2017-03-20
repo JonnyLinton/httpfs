@@ -1,5 +1,6 @@
 import os
 import re
+import json
 from logger_init import logger
 from HTTPException import HTTPException
 
@@ -13,7 +14,7 @@ def get_file(path_from_request, verbose, server_working_directory):
     if path_from_request == "/" or os.path.isdir(absolute_path):
         #return tree
         logger.info("Returning list of files in main directory: %s", absolute_path)
-        return list_files(absolute_path)
+        return json.dumps(path_to_dir(absolute_path), sort_keys=True, indent=4)
     else:
         # Check if file exists
         file_exists(absolute_path)
@@ -94,3 +95,12 @@ def list_files(startpath):
         for f in files:
             tree += '{}{}'.format(subindent, f) + "\n"
     return tree
+
+def path_to_dir(path):
+    dir = {'name': os.path.basename(path)}
+    if os.path.isdir(path):
+        dir['type'] = "directory"
+        dir['children'] = [path_to_dir(os.path.join(path,x)) for x in os.listdir(path)]
+    else:
+        dir['type'] = "file"
+    return dir
